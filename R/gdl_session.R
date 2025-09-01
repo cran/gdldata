@@ -11,7 +11,8 @@ GDLSession <- setClass('GDLSession', slots=list(
   year="numeric",
   interpolation="logical",
   extrapolationYearsLinear="numeric",
-  extrapolationYearsNearest="numeric"
+  extrapolationYearsNearest="numeric",
+  transposition="logical"
 ))
 
 #' GDLSession show function
@@ -43,7 +44,7 @@ show.GDLSession <- setMethod('show', 'GDLSession', function(object) {
 gdl_session <- function(token) {
   session <- new('GDLSession',
                  token = token,
-                 dataset = "areadata",
+                 dataset = "wealth",
                  indicators = c('iwi', 'phone', 'fridge'),
                  levels = c(0),
                  year = 2021,

@@ -13,9 +13,8 @@
 #' \dontrun{
 #' # Create a session using your API token (provided by environment here)
 #' session <- gdl_session(Sys.getenv('GDL_API_TOKEN'))
-#' # Request list of available indicators
-#' indicators <- gdl_indicators(session)
-#' head(indicators, n=10)
+#' # Request list of available indicators for 'geos' dataset
+#' indicators <- session |> set_dataset('geos') |> gdl_indicators()
 #' }
 gdl_indicators <- function(session) {
   if (!is(session, GDLSession)) {
@@ -81,6 +80,35 @@ gdl_countries <- function(session) {
   }
 
   url <- paste0(GDL_BASEURL, '/', session@dataset, '/api/countries/?token=', session@token)
+  df <- gdl_request_csv(session, url)
+  return(df)
+}
+
+#' Get dataset list
+#'
+#' Returns a list of datasets available.
+#'
+#' @param session
+#' A valid GDL session object to interface with.
+#'
+#' @returns A data frame containing a list of datasets.
+#'
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' # Create a session using your API token (provided by environment here)
+#' session <- gdl_session(Sys.getenv('GDL_API_TOKEN'))
+#' # Request list of datasets
+#' datasets <- gdl_datasets(session)
+#' head(datasets, n=10)
+#' }
+gdl_datasets <- function(session) {
+  if (!is(session, GDLSession)) {
+    stop("Argument must be a GDL Session Object")
+  }
+
+  url <- paste0(GDL_BASEURL, '/', session@dataset, '/api/datasets/?token=', session@token)
   df <- gdl_request_csv(session, url)
   return(df)
 }

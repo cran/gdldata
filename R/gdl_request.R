@@ -42,7 +42,7 @@ gdl_request <- function(session) {
   url <- paste0(url, paste(session@indicators, collapse='+'), '/')
 
   # Countries?
-  if (nchar(session@countries) > 0) {
+  if (length(session@countries) > 0) {
     url <- paste0(url, paste(session@countries, collapse='+'), '/')
   }
 
@@ -63,6 +63,9 @@ gdl_request <- function(session) {
   } else if (session@extrapolationYearsNearest > 0) {
     url <- paste0(url, '&extrapolation=2&nearest_years=', session@extrapolationYearsNearest)
   }
+
+  # Transposition
+  url <- paste0(url, '&transposition=', ifelse(session@transposition, 'vars', 'rows'))
 
   df <- gdl_request_csv(session, url)
   return(df)
