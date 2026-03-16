@@ -1,6 +1,6 @@
 Package: gdldata
 Title: 'Global Data Lab' R API
-Version: 0.2
+Version: 0.3
 Authors@R: c(
     person("Global Data Lab", email = "info@globaldatalab.org", role = "cph"),
     person("Aaron", "van Geffen", email = "aaron.vangeffen@ru.nl", role = c("aut", "cre")))
@@ -17,9 +17,9 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.3.2
 NeedsCompilation: no
-Packaged: 2025-09-01 18:18:48 UTC; aaron
+Packaged: 2026-03-16 11:24:29 UTC; aaron
 Author: Global Data Lab [cph],
   Aaron van Geffen [aut, cre]
 Maintainer: Aaron van Geffen <aaron.vangeffen@ru.nl>
 Repository: CRAN
-Date/Publication: 2025-09-01 18:40:08 UTC
+Date/Publication: 2026-03-16 11:40:02 UTC
